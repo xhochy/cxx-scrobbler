@@ -1,0 +1,7 @@
+= cxx-scrobbler
+
+Description goes here.
+
+== Copyright
+
+Copyright (c) 2009 Uwe L. Korn. See LICENSE for details.
