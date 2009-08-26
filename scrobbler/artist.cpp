@@ -6,16 +6,16 @@ Artist Artist::parse(xmlNodePtr node)
 {
   Artist result;
   
-  for (xmlNodePtr cur_node = node->children; cur_node; cur_node = cur_node->next) {
+  /*for (xmlNodePtr cur_node = node->children; cur_node; cur_node = cur_node->next) {
     if (xmlStrEqual(cur_node->name, reinterpret_cast<const xmlChar *>("playcount")))
-      result.m_playcount = atoi(reinterpret_cast<const char *>(cur_node->content));
+      result.m_playcount = atoi(reinterpret_cast<const char *>(cur_node->children->content));
     if (xmlStrEqual(cur_node->name, reinterpret_cast<const xmlChar *>("mbid")))
-      result.m_mbid = std::string(reinterpret_cast<const char *>(cur_node->content));
+      result.m_mbid = std::string(reinterpret_cast<const char *>(cur_node->children->content));
     if (xmlStrEqual(cur_node->name, reinterpret_cast<const xmlChar *>("url")))
-      result.m_url = std::string(reinterpret_cast<const char *>(cur_node->content));
+      result.m_url = std::string(reinterpret_cast<const char *>(cur_node->children->content));
     if (xmlStrEqual(cur_node->name, reinterpret_cast<const xmlChar *>("name")))
-      result.m_name = std::string(reinterpret_cast<const char *>(cur_node->content));
-  }
+      result.m_name = std::string(reinterpret_cast<const char *>(cur_node->children->content));
+  }*/
   /* TODO
       data[:match] = child.content.to_i if child.name == 'match'
       data[:tagcount] = child.content.to_i if child.name == 'tagcount'
