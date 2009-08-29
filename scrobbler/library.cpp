@@ -66,6 +66,7 @@ std::vector<Artist> Library::artists()
       // found artists node, get number of pages
       pages = atoi(reinterpret_cast<const char *>(xmlGetProp(cur_node, 
         reinterpret_cast<const xmlChar *>("totalPages"))));
+      
       // request all other pages
       // parse artists in this page
       for (xmlNodePtr art_node = cur_node->children; art_node; art_node = art_node->next) {
@@ -82,7 +83,7 @@ std::vector<Artist> Library::artists()
   for (int i = 1; i < pages; i++) {
     curl_easy_setopt(curl_handle, CURLOPT_URL, (boost::format("%1%&page=%2%") 
       % url % (i + 1)).str().c_str());
-    std::string * outstr = new std::string();
+    outstr = new std::string();
     curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, outstr); 
     curl_easy_perform(curl_handle);  
     
