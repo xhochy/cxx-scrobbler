@@ -10,6 +10,7 @@ namespace Scrobbler {
   public:
     void writeXml(xmlTextWriterPtr writer) const;
     static Artist parse(xmlNodePtr node);
+    std::string Name() const; 
   private:
     bool m_streamable;
     int m_playcount;
