@@ -154,3 +154,12 @@ string Artist::Name() const
   return this->m_name;
 }
 
+string Artist::Url() const
+{
+  return this->m_url;
+}
+
+int Artist::Playcount() const
+{
+  return this->m_playcount;
+}

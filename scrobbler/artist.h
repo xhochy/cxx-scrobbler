@@ -1,3 +1,6 @@
+#ifndef __SCROBBLER_ARTIST_H_
+#define __SCROBBLER_ARTIST_H_
+
 #include <string>
 
 // LibXML2
@@ -10,7 +13,9 @@ namespace Scrobbler {
   public:
     void writeXml(xmlTextWriterPtr writer) const;
     static Artist parse(xmlNodePtr node);
+    int Playcount() const;
     std::string Name() const; 
+    std::string Url() const;
   private:
     bool m_streamable;
     int m_playcount;
@@ -26,3 +31,5 @@ namespace Scrobbler {
     std::string m_image_large;
   };
 } // Scrobbler
+
+#endif // __SCROBBLER_ARTIST_H_
