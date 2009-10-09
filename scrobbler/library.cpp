@@ -42,15 +42,21 @@ std::vector<Artist> Library::artists()
 {
   std::vector<Artist> result;
   
-  // Init cURL and request first page
+  // Initialize cURL and request first page
   CURL * curl_handle = curl_easy_init();
+  if (curl_handle == NULL)
+	  throw runtime_error("Could not initialize cURL.");
   std::string * outstr = new std::string();
   std::string url = "http://ws.audioscrobbler.com:80/2.0/?method=library.getartists";
   url += "&user=" + this->username + "&api_key=" + scobbler_api_key;
-  curl_easy_setopt(curl_handle, CURLOPT_URL, url.c_str());
-  curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, write_data); 
-  curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, outstr); 
-  curl_easy_perform(curl_handle);
+  if (curl_easy_setopt(curl_handle, CURLOPT_URL, url.c_str()) != CURLE_OK)
+	  throw runtime_error("Could not set URL in cURL request.");
+  if (curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, write_data) != CURLE_OK)
+	  throw runtime_error("Could not associate write function to cURL request.");
+  if (curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, outstr) != CURLE_OK)
+	  throw runtime_error("Could not associate write-pointer to cURL request.");
+  if (curl_easy_perform(curl_handle) != CURLE_OK)
+	  throw runtime_error("Could not request library from Last.fm.");
   
   // parse result
   int pages = 1;
