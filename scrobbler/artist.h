@@ -9,12 +9,39 @@
 #include <libxml/xmlwriter.h>
 
 namespace Scrobbler {
+  /**
+   * Class for artist information and invocation of artist related functions
+   */
   class Artist {
   public:
-    void writeXml(xmlTextWriterPtr writer) const;
+	/**
+	 * Writes the artist information into an XML document
+	 */
+	void writeXml(xmlTextWriterPtr writer) const;
+
+	/**
+	 * Reads the available data from a XML node to generate an artist object
+	 * out of it.
+	 */
     static Artist parse(xmlNodePtr node);
+
+    /**
+     * How often an artist was played. This information differs from which
+     * source this artist object was extract.
+     *
+     * E.g. if this artist object is out of one user's library, playcount is
+     * the number of times the user heard this artist.
+     */
     int Playcount() const;
+
+    /**
+     * The name of the artist.
+     */
     std::string Name() const; 
+
+    /**
+     * The URL to the artist's Last.fm page.
+     */
     std::string Url() const;
   private:
     bool m_streamable;

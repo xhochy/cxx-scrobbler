@@ -55,11 +55,6 @@ Artist Artist::parse(xmlNodePtr node)
   if (xmlHasProp(node, reinterpret_cast<const xmlChar *>("rank")))
     result.m_rank = atoi(reinterpret_cast<const char *>(xmlGetProp(node, 
       reinterpret_cast<const xmlChar *>("rank"))));
-  /* TODO
-    # Get all information from the root's attributes
-    data[:streamable] = xml['streamable'] if xml['streamable']
-    data[:mbid] = xml['mbid'] if xml['mbid']
-  */
   return result;
 }
 

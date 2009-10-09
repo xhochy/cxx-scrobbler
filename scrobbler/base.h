@@ -3,6 +3,9 @@
 
 #include <string>
 
+/**
+ * Storage of the globally used API key for Last.fm access
+ */
 extern std::string scobbler_api_key;
 
 namespace Scrobbler {
